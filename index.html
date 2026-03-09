@@ -1,1 +1,405 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lassana haraka | Digital Marketing Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d8b384;
+            --secondary: #5e454b;
+            --bg-light: #ffffff;
+            --bg-soft: #fcf9f5;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg-light);
+            color: var(--secondary);
+        }
+
+        .text-primary { color: var(--primary); }
+        .bg-primary { background-color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+        .bg-secondary { background-color: var(--secondary); }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(216, 179, 132, 0.2);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #fcf9f5 100%);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(94, 69, 75, 0.05);
+        }
+
+        .btn-fancy {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-fancy::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translate(-50%, -50%) rotate(45deg) scale(0);
+            transition: transform 0.5s ease;
+        }
+
+        .btn-fancy:hover::after {
+            transform: translate(-50%, -50%) rotate(45deg) scale(1);
+        }
+
+        /* Custom spacing for the cow icon/logo container */
+        .brand-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cow-icon {
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+
+        /* Responsive Grid fixes */
+        .mobile-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav py-4">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="brand-logo-container">
+                <!-- Using a representation of the cow logo provided -->
+                <div class="cow-icon">
+                    <svg viewBox="0 0 100 100" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M80,40 C85,40 90,45 90,50 C90,65 80,75 65,75 L35,75 C20,75 10,65 10,50 C10,45 15,40 20,40 C20,30 30,20 50,20 C70,20 80,30 80,40 Z" />
+                        <circle cx="35" cy="50" r="5" fill="#5e454b"/>
+                        <circle cx="65" cy="50" r="5" fill="#5e454b"/>
+                    </svg>
+                </div>
+                <span class="text-2xl font-bold tracking-tight text-secondary">lassana <span class="text-primary">haraka</span></span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="#services" class="hover:text-primary transition-colors">Services</a>
+                <a href="#about" class="hover:text-primary transition-colors">About</a>
+                <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+                <a href="#" class="bg-secondary text-white px-6 py-2 rounded-full text-sm btn-fancy">Let's Talk</a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-40 hidden flex-col items-center justify-center space-y-8 text-2xl font-bold transition-all duration-300">
+        <a href="#services" class="mobile-link">Services</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+        <button class="bg-primary text-white px-10 py-4 rounded-full">Work with Us</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen pt-32 pb-20 hero-gradient flex items-center">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="reveal active">
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+                    Digital growth, <br>
+                    <span class="text-primary italic font-light">beautifully</span> executed.
+                </h1>
+                <p class="text-xl text-gray-600 mb-10 max-w-lg leading-relaxed">
+                    We combine strategic marketing with cutting-edge digital expertise to scale your brand in the modern era.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact" class="bg-secondary text-white px-8 py-4 rounded-full text-center font-bold btn-fancy text-lg">Start a Project</a>
+                    <a href="#services" class="border-2 border-primary text-primary px-8 py-4 rounded-full text-center font-bold hover:bg-primary hover:text-white transition-all text-lg">Our Expertise</a>
+                </div>
+            </div>
+            <div class="relative reveal active" style="transition-delay: 0.2s;">
+                <div class="w-full h-[400px] md:h-[550px] bg-primary rounded-3xl relative overflow-hidden shadow-2xl">
+                    <!-- Abstract Shape Decor -->
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-secondary opacity-10 rounded-full"></div>
+                    <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-white opacity-20 rounded-full"></div>
+                    
+                    <!-- Content Over Image area -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-12 text-center">
+                        <div class="bg-white/90 backdrop-blur p-8 rounded-2xl shadow-lg border border-primary/20">
+                            <h3 class="text-secondary font-bold text-2xl mb-2">300% Growth</h3>
+                            <p class="text-gray-500 text-sm italic">Average ROI for our 2023 clients</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Decorative element -->
+                <div class="absolute -z-10 top-10 -right-10 w-full h-full border-2 border-primary rounded-3xl"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands/Trust Bar -->
+    <div class="bg-white py-12 border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-center text-gray-400 uppercase tracking-widest text-sm mb-8">Trusted by forward-thinking brands</p>
+            <div class="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                <span class="text-2xl font-bold text-secondary">LUMINARY</span>
+                <span class="text-2xl font-bold text-secondary">VELOCITY</span>
+                <span class="text-2xl font-bold text-secondary">NEXUS</span>
+                <span class="text-2xl font-bold text-secondary">ELEVATE</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Our Services</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-secondary">Full-stack digital solutions</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-10 rounded-3xl reveal" style="transition-delay: 0.1s;">
+                    <div class="w-16 h-16 bg-soft-primary mb-6 flex items-center justify-center rounded-2xl bg-[#fcf9f5]">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Performance Marketing</h4>
+                    <p class="text-gray-600 leading-relaxed">Data-driven campaigns across Meta, Google, and TikTok designed for maximum conversion.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-10 rounded-3xl reveal" style="transition-delay: 0.2s;">
+                    <div class="w-16 h-16 mb-6 flex items-center justify-center rounded-2xl bg-[#fcf9f5]">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Content Strategy</h4>
+                    <p class="text-gray-600 leading-relaxed">Storytelling that resonates. We create visuals and copy that turn observers into brand advocates.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-10 rounded-3xl reveal" style="transition-delay: 0.3s;">
+                    <div class="w-16 h-16 mb-6 flex items-center justify-center rounded-2xl bg-[#fcf9f5]">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Web Experience</h4>
+                    <p class="text-gray-600 leading-relaxed">Bespoke UI/UX design and high-performance development that ensures your home on the web is flawless.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="py-24 bg-secondary text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Why Lassana Haraka?</h2>
+                <h3 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">We don't just run ads. We build systems.</h3>
+                <ul class="space-y-6">
+                    <li class="flex items-start">
+                        <div class="w-6 h-6 bg-primary rounded-full mt-1 mr-4 flex-shrink-0 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        </div>
+                        <p class="text-lg opacity-80">Transparent reporting with real-time dashboards.</p>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-6 h-6 bg-primary rounded-full mt-1 mr-4 flex-shrink-0 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        </div>
+                        <p class="text-lg opacity-80">A dedicated team of experts, not account managers.</p>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-6 h-6 bg-primary rounded-full mt-1 mr-4 flex-shrink-0 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        </div>
+                        <p class="text-lg opacity-80">Agile methodologies for fast scaling.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="relative reveal">
+                <div class="aspect-square bg-[#d8b384]/20 rounded-[4rem] border border-[#d8b384]/30 flex items-center justify-center p-8">
+                     <!-- Representation of the logo centered -->
+                     <svg viewBox="0 0 100 100" fill="#d8b384" class="w-2/3 opacity-80" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M80,40 C85,40 90,45 90,50 C90,65 80,75 65,75 L35,75 C20,75 10,65 10,50 C10,45 15,40 20,40 C20,30 30,20 50,20 C70,20 80,30 80,40 Z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section id="contact" class="py-24 bg-[#fcf9f5]">
+        <div class="max-w-4xl mx-auto px-6 text-center reveal">
+            <h2 class="text-4xl md:text-6xl font-bold text-secondary mb-10">Ready to make something <span class="text-primary italic">beautiful</span> together?</h2>
+            
+            <form class="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl text-left border border-primary/10">
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-bold text-secondary mb-2">Name</label>
+                        <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary outline-none transition-all" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-secondary mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary outline-none transition-all" placeholder="john@example.com">
+                    </div>
+                </div>
+                <div class="mb-8">
+                    <label class="block text-sm font-bold text-secondary mb-2">How can we help?</label>
+                    <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary outline-none transition-all" placeholder="Tell us about your project..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-secondary text-white py-4 rounded-xl font-bold text-lg hover:bg-primary transition-all">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-20 pb-10 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-2">
+                    <div class="brand-logo-container mb-6">
+                        <div class="cow-icon">
+                            <svg viewBox="0 0 100 100" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M80,40 C85,40 90,45 90,50 C90,65 80,75 65,75 L35,75 C20,75 10,65 10,50 C10,45 15,40 20,40 C20,30 30,20 50,20 C70,20 80,30 80,40 Z" />
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-bold tracking-tight text-secondary">lassana <span class="text-primary">haraka</span></span>
+                    </div>
+                    <p class="text-gray-500 max-w-sm">Elevating brands through strategic digital marketing and intentional design. Based in the digital ether, serving the world.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6 uppercase text-sm tracking-widest">Connect</h5>
+                    <div class="flex flex-col space-y-4 text-gray-500">
+                        <a href="#" class="hover:text-primary transition-colors">Instagram</a>
+                        <a href="#" class="hover:text-primary transition-colors">LinkedIn</a>
+                        <a href="#" class="hover:text-primary transition-colors">Twitter</a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6 uppercase text-sm tracking-widest">Legal</h5>
+                    <div class="flex flex-col space-y-4 text-gray-500">
+                        <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+                <p>&copy; 2024 lassana haraka. All rights reserved.</p>
+                <p class="mt-4 md:mt-0 italic">Move fast. Be beautiful.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveals
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            document.body.classList.toggle('overflow-hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+            });
+        });
+
+        // Smooth Navbar Shrink
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2');
+                nav.classList.remove('py-4');
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+                nav.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
