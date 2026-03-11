@@ -401,37 +401,42 @@
       </div>
     </div>
 
-    <!-- Contact Form -->
     <div data-animation-on-scroll="" class="bg-[#111]/40 backdrop-blur-md p-8 md:p-12 rounded-sm border border-white/10">
-      <form class="space-y-8" onsubmit="event.preventDefault(); alert('Message sent to the powerhouse.');" data-netlify="true" >
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="space-y-2" data-pixel-id="5j5xt" data-pixel-kind="text">
-            <label class="text-xs uppercase tracking-widest text-text-secondary font-mono">Name</label>
-            <input type="text" placeholder="Design Pioneer" class="w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-brand-primary transition-colors" required="">
-          </div>
-          <div class="space-y-2" data-pixel-id="uwsns" data-pixel-kind="text">
-            <label class="text-xs uppercase tracking-widest text-text-secondary font-mono">Email</label>
-            <input type="email" placeholder="visionary@future.com" class="w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-brand-primary transition-colors" required="">
-          </div>
-        </div>
-        <div class="space-y-2" data-pixel-id="p2zcn" data-pixel-kind="text">
-          <label class="text-xs uppercase tracking-widest text-text-secondary font-mono">Interest</label>
-          <select class="w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-brand-primary transition-colors appearance-none">
-            <option class="bg-neutral-background">UI/UX Design</option>
-            <option class="bg-neutral-background">Graphic Design</option>
-            <option class="bg-neutral-background">Voice Over</option>
-            <option class="bg-neutral-background">Full Ad Campaign</option>
-          </select>
-        </div>
-        <div class="space-y-2" data-pixel-id="cd5i6" data-pixel-kind="text">
-          <label class="text-xs uppercase tracking-widest text-text-secondary font-mono">Manifesto</label>
-          <textarea rows="3" placeholder="Describe your vision..." class="w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-brand-primary transition-colors" required=""></textarea>
-        </div>
-        <button class="w-full bg-brand-primary text-text-onPrimary font-bold py-5 rounded-sm hover:bg-brand-secondary transition-all shadow-cta uppercase tracking-widest text-sm" data-pixel-id="ss9k8" data-pixel-kind="text">
-          Initialize Contact
-        </button>
-      </form>
+  <form name="contact" method="POST" data-netlify="true" class="space-y-8">
+    
+    <input type="hidden" name="form-name" value="contact" />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="space-y-2" data-pixel-id="5j5xt" data-pixel-kind="text">
+        <label class="text-xs uppercase tracking-widest text-text-secondary font-mono">Name</label>
+        <input type="text" name="name" placeholder="Design Pioneer" class="w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-brand-primary transition-colors" required="">
+      </div>
+      <div class="space-y-2" data-pixel-id="uwsns" data-pixel-kind="text">
+        <label class="text-xs uppercase tracking-widest text-text-secondary font-mono">Email</label>
+        <input type="email" name="email" placeholder="visionary@future.com" class="w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-brand-primary transition-colors" required="">
+      </div>
     </div>
+
+    <div class="space-y-2" data-pixel-id="p2zcn" data-pixel-kind="text">
+      <label class="text-xs uppercase tracking-widest text-text-secondary font-mono">Interest</label>
+      <select name="interest" class="w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-brand-primary transition-colors appearance-none">
+        <option class="bg-neutral-background">UI/UX Design</option>
+        <option class="bg-neutral-background">Graphic Design</option>
+        <option class="bg-neutral-background">Voice Over</option>
+        <option class="bg-neutral-background">Full Ad Campaign</option>
+      </select>
+    </div>
+
+    <div class="space-y-2" data-pixel-id="cd5i6" data-pixel-kind="text">
+      <label class="text-xs uppercase tracking-widest text-text-secondary font-mono">Manifesto</label>
+      <textarea name="message" rows="3" placeholder="Describe your vision..." class="w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-brand-primary transition-colors" required=""></textarea>
+    </div>
+
+    <button type="submit" class="w-full bg-brand-primary text-text-onPrimary font-bold py-5 rounded-sm hover:bg-brand-secondary transition-all shadow-cta uppercase tracking-widest text-sm" data-pixel-id="ss9k8" data-pixel-kind="text">
+      Initialize Contact
+    </button>
+  </form>
+</div>
   </div>
 </section></main>
 
